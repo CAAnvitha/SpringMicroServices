@@ -1,0 +1,10 @@
+com/anvitha/productservice/dto/ProductRequest$ProductRequestBuilder.class
+com/anvitha/productservice/dto/ProductResponse$ProductResponseBuilder.class
+com/anvitha/productservice/service/ProductService.class
+com/anvitha/productservice/model/Product$ProductBuilder.class
+com/anvitha/productservice/ProductServiceApplication.class
+com/anvitha/productservice/dto/ProductResponse.class
+com/anvitha/productservice/repository/ProductRepository.class
+com/anvitha/productservice/controller/ProductController.class
+com/anvitha/productservice/model/Product.class
+com/anvitha/productservice/dto/ProductRequest.class

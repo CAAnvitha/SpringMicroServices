@@ -1,0 +1,7 @@
+/Users/anvithachegu/Documents/GitHub/SpringCloud/product-service/src/main/java/com/anvitha/productservice/dto/ProductRequest.java
+/Users/anvithachegu/Documents/GitHub/SpringCloud/product-service/src/main/java/com/anvitha/productservice/dto/ProductResponse.java
+/Users/anvithachegu/Documents/GitHub/SpringCloud/product-service/src/main/java/com/anvitha/productservice/repository/ProductRepository.java
+/Users/anvithachegu/Documents/GitHub/SpringCloud/product-service/src/main/java/com/anvitha/productservice/model/Product.java
+/Users/anvithachegu/Documents/GitHub/SpringCloud/product-service/src/main/java/com/anvitha/productservice/ProductServiceApplication.java
+/Users/anvithachegu/Documents/GitHub/SpringCloud/product-service/src/main/java/com/anvitha/productservice/controller/ProductController.java
+/Users/anvithachegu/Documents/GitHub/SpringCloud/product-service/src/main/java/com/anvitha/productservice/service/ProductService.java
