@@ -3,10 +3,13 @@ package com.anvitha.orderservice.service;
 import com.anvitha.orderservice.dto.InventoryResponse;
 import com.anvitha.orderservice.dto.OrderLineItemsDto;
 import com.anvitha.orderservice.dto.OrderRequest;
+import com.anvitha.orderservice.event.OrderPlacedEvent;
 import com.anvitha.orderservice.model.Order;
 import com.anvitha.orderservice.model.OrderLineItems;
 import com.anvitha.orderservice.reposirtory.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -18,10 +21,12 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class OrderService {
 
     private  final OrderRepository orderRepository;
     private final WebClient.Builder webClientBuilder;
+    private  final KafkaTemplate<String,OrderPlacedEvent> kafkaTemplate;
 
 
     public String placeOrder(OrderRequest orderRequest){
@@ -34,6 +39,7 @@ public class OrderService {
 
         order.setOrderLineItemsList(orderLineItems);
         List<String> skuCodes = order.getOrderLineItemsList().stream().map(OrderLineItems::getSkuCode).toList();
+        log.info("Calling Inventory Service");
 
 
 
@@ -46,16 +52,13 @@ public class OrderService {
         if(allProductsInStock){
 
             orderRepository.save(order);
+//            kafkaTemplate.send("notificationTopic",order.getOrderNumber());
+            kafkaTemplate.send("notificationTopic",new OrderPlacedEvent(order.getOrderNumber()));
+
             return  "Order Placed Successfully";
         }else{
             throw new IllegalArgumentException("Product is not in stock , please try again later");
         }
-
-
-
-
-
-
 
     }
 

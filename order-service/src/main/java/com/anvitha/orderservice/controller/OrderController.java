@@ -23,9 +23,9 @@ public class OrderController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @TimeLimiter(name="inventory")
+//    @TimeLimiter(name="inventory")
     @CircuitBreaker(name="inventory",fallbackMethod = "handleFallBackMethod")
-    @Retry(name="inventory")
+//    @Retry(name="inventory")
 //    public String placeOrder(@RequestBody OrderRequest orderRequest){
 //        orderService.placeOrder(orderRequest);
 //        return "Order Placed Successfully";
